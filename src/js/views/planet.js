@@ -1,7 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
+import { useParams } from "react-router-dom";
 const Planet = () => {
 	const { store, actions } = useContext(Context);
+	const { id } = useParams();
+	useEffect(() => {
+		actions.loadPlanetData(id);
+	}, []);
 	return (
 		<div className="container-fluid mt-5 pt-3">
 			<div className="container-fluid">

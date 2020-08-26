@@ -1,8 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
+import { useParams } from "react-router-dom";
 
 const Character = () => {
 	const { store, actions } = useContext(Context);
+	const { id } = useParams();
+
+	useEffect(() => {
+		actions.loadCharacterData(id);
+
+		/* 		const peopleData = !!store.people ? store.people[id] : null;
+					   console.log(peopleData);
+					   if (peopleData !== null) {
+						   setNewData(peopleData);
+					   } */
+	}, []);
 
 	return (
 		<div className="container-fluid mt-5 pt-3">

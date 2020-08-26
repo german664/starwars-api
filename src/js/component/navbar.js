@@ -30,8 +30,8 @@ const Navbar = () => {
 							store.favorites.map((el, i) => {
 								return (
 									<>
-										<Link to="/character" key={i} className="dropdown-item" href="#">
-											{el}
+										<Link to={`/${el.path}/${el.id}`} key={i} className="dropdown-item" href="#">
+											{el.name}
 										</Link>
 										<i
 											className="far fa-trash-alt float-right"

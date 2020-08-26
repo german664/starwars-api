@@ -1,7 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			people: [],
+			people: null,
 			planets: [],
 			characterInfo: [],
 			planetsInfo: [],
@@ -9,12 +9,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
-			exampleFunction: () => { },
-			loadPeopleData: async () => {
-				const result = await fetch("https://swapi.dev/api/people/");
-				const data = await result.json();
-
-				setStore({ people: data.results });
+			exampleFunction: () => {},
+			loadPeopleData: () => {
+				fetch("https://swapi.dev/api/people/")
+					.then(result => result.json())
+					.then(data => setStore({ people: data.results }));
 			},
 			loadPlanetsData: async () => {
 				const result = await fetch("https://swapi.dev/api/planets/");
@@ -22,13 +21,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				setStore({ planets: data.results });
 			},
-			loadCharacterData: async character => {
-				const result = await fetch(character);
+			loadCharacterData: async id => {
+				const result = await fetch(`https://swapi.dev/api/people/${id}`);
 				const data = await result.json();
 				setStore({ characterInfo: data });
 			},
-			loadPlanetData: async currentPlanet => {
-				const result = await fetch(currentPlanet);
+			loadPlanetData: async id => {
+				const result = await fetch(`https://swapi.dev/api/planets/${id}`);
 				const data = await result.json();
 				setStore({ planetsInfo: data });
 				console.log(data);
@@ -41,7 +40,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			setFavorites: title => {
 				const store = getStore();
-				if (!store.favorites.includes(title)) {
+				if (!store.favorites.includes(title.name)) {
 					setStore({ favorites: store.favorites.concat(title) });
 				}
 			},
