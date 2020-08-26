@@ -1,0 +1,31 @@
+.card-carousel {
+  overflow-x: auto;
+  overflow-y: auto;
+}
+.card-carousel li {
+  margin: 1rem;
+  list-style: none;
+}
+.lists {
+  padding: 2rem;
+  border-top: 1px solid rgb(236, 55, 55);
+  color: rgb(236, 55, 55);
+}
+
+.logo {
+  width: 5em;
+}
+
+.dropdown-item {
+  display: inline-block;
+  padding: 0px;
+  width: 80%;
+  padding-left: 10px;
+  padding-bottom: 5px;
+}
+.navbar i {
+  display: inline-block;
+  width: 20%;
+  cursor: pointer;
+  padding-top: 4px;
+}

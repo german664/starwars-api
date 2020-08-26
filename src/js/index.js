@@ -4,6 +4,10 @@ import ReactDOM from "react-dom";
 
 //include bootstrap npm library into the bundle
 import "bootstrap/dist/css/bootstrap.css";
+import "popper.js";
+import "jquery";
+import "bootstrap";
+import "@fortawesome/fontawesome-free";
 
 //include your index.scss file into the bundle
 import "../styles/index.scss";
